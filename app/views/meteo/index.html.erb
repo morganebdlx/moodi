@@ -1,0 +1,23 @@
+<h1><%= @meteo["location"]["name"] %></h1>
+<img src="<%= @meteo["current"]["condition"]["icon"] %>" alt="icone météo">
+
+<p><strong><%= @meteo["current"]["temp_c"] %> °C</strong> </p>
+<p><strong> Ressentie : <%= @meteo["current"]["feelslike_c"] %> °C</strong></p>
+<p><strong><%= @meteo["current"]["condition"]["text"] %></strong> </p>
+<% uv = @meteo["current"]["uv"] %>
+<p><strong>UV : </strong>
+  <span style="color: <%= uv >= 7 ? 'red' : uv >= 4 ? 'orange' : 'green' %>">
+    <%= uv %>
+  </span>
+</p>
+<p><strong>Vent :</strong> <%= @meteo["current"]["wind_kph"] %> km/h <%= @meteo["current"]["wind_dir"] %></p>
+
+
+
+
+
+
+<form method="get" action="/">
+  <input type="text" name="city" id="city" placeholder="Choose your city" />
+  <input type="submit" value="Go" />
+</form>
